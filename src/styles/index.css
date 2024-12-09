@@ -1,3 +1,23 @@
-/* 
-    General Styles
-*/
+.horizontal-scroll {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #e0e0e0;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    height: 12px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 3px solid #e0e0e0;
+}
