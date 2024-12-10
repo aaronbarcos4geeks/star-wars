@@ -40,7 +40,7 @@ const Home = () => {
                      Learn more!
                   </Link>
                   <button
-                     className="btn btn-outline-warning ms-2"
+                     className={`btn btn-outline-warning ms-2 ${actions.isFavorite(item) ? 'active' : ''}`}
                      onClick={() => actions.addFavorite(item)}
                   >
                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart" viewBox="0 0 16 16">
