@@ -3,17 +3,33 @@ import { useParams } from 'react-router-dom';
 
 const Detail = () => {
    const { type, id } = useParams();
+   const [isLoading, setIsLoading] = useState(true);
    const [detail, setDetail] = useState(null);
 
    useEffect(() => {
       const fetchDetail = async () => {
-         const res = await fetch(`https://www.swapi.tech/api/${type}/${id}`).then((res) => res.json());
-         setDetail(res.result.properties);
+         setIsLoading(true);
+         try {
+            const res = await fetch(`https://www.swapi.tech/api/${type}/${id}`).then((res) => res.json());
+            setDetail(res.result.properties);
+         } catch (error) {
+            console.error("Error fetching data:", error);
+         } finally {
+            setIsLoading(false);
+         }
       };
       fetchDetail();
    }, [type, id]);
 
-   if (!detail) return <p className="text-center mt-5">Loading...</p>;
+   if (isLoading) {
+      return (
+         <div className="d-flex justify-content-center align-items-center vh-100">
+            <div className="spinner-border text-primary" role="status">
+               <span className="visually-hidden">Loading...</span>
+            </div>
+         </div>
+      );
+   }
 
    return (
       <div className="container mt-5">
