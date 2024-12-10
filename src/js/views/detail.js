@@ -17,18 +17,33 @@ const Detail = () => {
 
    return (
       <div className="container mt-5">
-         <div className="card">
-            <img
-               src={`https://starwars-visualguide.com/assets/img/${type}/${id}.jpg`}
-               className="card-img-top"
-               alt={detail.name || 'Detail'}
-               onError={(e) => (e.target.src = 'https://via.placeholder.com/150')}
-            />
-            <div className="card-body">
-               <h5 className="card-title">{detail.name}</h5>
-               <p className="card-text">
-                  <pre>{JSON.stringify(detail, null, 2)}</pre>
-               </p>
+         <div className="card mb-3" style={{ maxWidth: "1250px" }}>
+            <div className="row g-0">
+               <div className="col-md-4">
+                  <img
+                     src={`https://starwars-visualguide.com/assets/img/${type === 'people' ? 'characters' : type}/${id}.jpg`}
+                     className="img-fluid rounded-start"
+                     alt={detail.name || 'Detail'}
+                     onError={(e) => (e.target.src = 'https://starwars-visualguide.com/assets/img/placeholder.jpg')}
+                  />
+               </div>
+               <div className="col-md-8">
+                  <div className="card-body">
+                     <h5 className="card-title">{detail.name}</h5>
+                     <p className="card-text">
+                        <strong>Height:</strong> {detail.height} cm<br />
+                        <strong>Mass:</strong> {detail.mass} kg<br />
+                        <strong>Hair Color:</strong> {detail.hair_color}<br />
+                        <strong>Skin Color:</strong> {detail.skin_color}<br />
+                        <strong>Eye Color:</strong> {detail.eye_color}<br />
+                        <strong>Birth Year:</strong> {detail.birth_year}<br />
+                        <strong>Gender:</strong> {detail.gender}
+                     </p>
+                     <p className="card-text">
+                        <small className="text-muted">Last updated: {new Date(detail.edited).toLocaleDateString()}</small>
+                     </p>
+                  </div>
+               </div>
             </div>
          </div>
       </div>

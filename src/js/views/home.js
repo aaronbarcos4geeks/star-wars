@@ -65,11 +65,11 @@ const Home = () => {
 
    return (
       <div className="container">
-         <h2>People</h2>
+         <h2 className=' mt-4 mb-4 text-danger'>People</h2>
          <div className="horizontal-scroll">{data.people.map((person) => renderCard(person, 'characters'))}</div>
-         <h2>Vehicles</h2>
+         <h2 className=' mt-4 mb-4 text-danger'>Vehicles</h2>
          <div className="horizontal-scroll">{data.vehicles.map((vehicle) => renderCard(vehicle, 'vehicles'))}</div>
-         <h2>Planets</h2>
+         <h2 className='mt-4 mb-4 text-danger'>Planets</h2>
          <div className="horizontal-scroll">{data.planets.map((planet) => renderCard(planet, 'planets'))}</div>
       </div>
    );
